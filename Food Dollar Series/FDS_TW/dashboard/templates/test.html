@@ -1,0 +1,29 @@
+{% extends "components/header.html" %}
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th scope='col'><span>Comp(%)</span></th>
+            <th scope='col'><span>OS(%)</span></th>
+            <th scope='col'><span>CFC(%)</span></th>
+            <th scope='col'><span>Taxes(%)</span></th>
+            <th scope='col'><span>Imports(%)</span></th>
+            <th scope='col'><span>Total(%)</span></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in table_data %}
+        <tr>
+            <th scope='row'><span>{{ data.Industry }}</span></td>
+            <td><span>{{ data.Compensation }}</span></td>
+            <td><span>{{ data.OperatingSurplus }}</span></td>
+            <td><span>{{ data.ConsumptionOfFixedCapital }}</span></td>
+            <td><span>{{ data.NetTaxes }}</span></td>
+            <td><span>{{ data.Imports }}</span></td>
+            <td><span>{{ data.Total }}</span></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

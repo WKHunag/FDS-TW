@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-27 16:54+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\ingredients\models.py:6 .\ingredients\models.py:12
+#: .\ingredients\models.py:13 .\ingredients\models.py:50
+#: .\ingredients\models.py:74 .\ingredients\models.py:107
+#: .\ingredients\models.py:135
+msgid "Year"
+msgstr ""
+
+#: .\ingredients\models.py:16 .\ingredients\models.py:22
+#: .\ingredients\models.py:23
+msgid "Category"
+msgstr ""
+
+#: .\ingredients\models.py:26 .\ingredients\models.py:35
+#: .\ingredients\models.py:36 .\ingredients\models.py:47
+#: .\ingredients\models.py:71 .\ingredients\models.py:104
+#: .\ingredients\models.py:132
+msgid "Sector"
+msgstr ""
+
+#: .\ingredients\models.py:39
+msgid "Farm Gate"
+msgstr ""
+
+#: .\ingredients\models.py:40
+msgid "Trans Gate"
+msgstr ""
+
+#: .\ingredients\models.py:41
+msgid "Process Gate"
+msgstr ""
+
+#: .\ingredients\models.py:42
+msgid "Trade Gate"
+msgstr ""
+
+#: .\ingredients\models.py:64 .\ingredients\models.py:65
+msgid "Stage Share"
+msgstr ""
+
+#: .\ingredients\models.py:68
+msgid "Farm Share"
+msgstr ""
+
+#: .\ingredients\models.py:69
+msgid "Marketing Share"
+msgstr ""
+
+#: .\ingredients\models.py:88 .\ingredients\models.py:89
+msgid "Marketing Bill"
+msgstr ""
+
+#: .\ingredients\models.py:92
+msgid "Agribusiness"
+msgstr ""
+
+#: .\ingredients\models.py:93
+msgid "Farm Production"
+msgstr ""
+
+#: .\ingredients\models.py:94
+msgid "Food Process"
+msgstr ""
+
+#: .\ingredients\models.py:95
+msgid "Packaging"
+msgstr ""
+
+#: .\ingredients\models.py:96
+msgid "Transportation"
+msgstr ""
+
+#: .\ingredients\models.py:97
+msgid "Wholesale trade"
+msgstr ""
+
+#: .\ingredients\models.py:98
+msgid "Retail trade"
+msgstr ""
+
+#: .\ingredients\models.py:99
+msgid "Food service"
+msgstr ""
+
+#: .\ingredients\models.py:100
+msgid "Energy"
+msgstr ""
+
+#: .\ingredients\models.py:101
+msgid "Finance and insurance"
+msgstr ""
+
+#: .\ingredients\models.py:102
+msgid "Advertising"
+msgstr ""
+
+#: .\ingredients\models.py:121 .\ingredients\models.py:122
+msgid "Industry Bill"
+msgstr ""
+
+#: .\ingredients\models.py:125
+#, fuzzy
+#| msgid "Documentation"
+msgid "Compensation"
+msgstr "使用說明"
+
+#: .\ingredients\models.py:126
+msgid "Operating Surplus"
+msgstr ""
+
+#: .\ingredients\models.py:127
+msgid "Consumption of Fixed Capital"
+msgstr ""
+
+#: .\ingredients\models.py:128
+msgid "Net taxes"
+msgstr ""
+
+#: .\ingredients\models.py:129
+msgid "Imports"
+msgstr ""
+
+#: .\ingredients\models.py:149 .\ingredients\models.py:150
+msgid "Primary Bill"
+msgstr ""
+
+#: .\ingredients\templates\components\navbar.html:30
+msgid "Background"
+msgstr "背景介紹"
+
+#: .\ingredients\templates\components\navbar.html:31
+msgid "Documentation"
+msgstr "使用說明"
+
+#: .\ingredients\templates\components\navbar.html:32
+msgid "Quick Facts"
+msgstr "查閱"
+
+#: .\ingredients\templates\components\navbar.html:33
+#: .\ingredients\templates\home.html:15
+msgid "Glossary"
+msgstr ""
+
+#: .\ingredients\templates\components\navbar.html:34
+msgid "Download the Data"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:7
+msgid "Marketing bill series"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:8
+msgid "Industry group series"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:9
+msgid "Primary factor series"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:10
+msgid "Underlying detailed value added data"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:11
+msgid "Data sources and estimation methodology"
+msgstr ""
+
+#: .\ingredients\templates\documentation.html:12
+#, fuzzy
+#| msgid "Documentation"
+msgid "Recommended citation"
+msgstr "使用說明"
+
+#: .\ingredients\templates\documentation.html:23
+#, python-format
+msgid ""
+"For calendar year %(year)s, the farm share was 24.0%% of each food New "
+"Taiwan dollar expenditure and the marketing bill was 76.0%% accounting for "
+"the remainder."
+msgstr ""
+"西元 %(year)s 年，農場份額佔每個食品支出的 24.0％，而行銷份額則佔剩餘的 "
+"76.0％。"
+
+#: .\ingredients\templates\documentation.html:50
+#, python-format
+msgid ""
+"For calendar year %(year)s, farm production value added was 15.6%% of each "
+"food dollar expenditure, implying that 8.4%% from farm commodity sales (from "
+"the farm share 24.0%%) was used to purchase products from the other industry "
+"groups. The %(year)s industry group, value added food dollar also indicates "
+"about 37.9%% of the food dollar value cover the services from food retailers "
+"(17.7%%) and foodservice establishments (20.1%%). Energy used throughout the "
+"food supply chain accounted for 3.9%% of every %(year)s food dollar "
+"expenditure. Advertising accounted for 1.2%% of a food dollar expenditure."
+msgstr ""
+
+#: .\ingredients\templates\home.html:5
+msgid ""
+"The Food (New Taiwan) Dollar Series measures annual expenditures by Taiwan "
+"consumers on domestically produced food. This data series is composed of "
+"three primary series—the marketing bill series, the industry group series, "
+"and the primary factor series—that describe different aspects of the food-"
+"supply chain. The three series show three different ways to split up the "
+"same food dollar. For more information about the Food Dollar Series, see:"
+msgstr ""
+
+#: .\ingredients\templates\home.html:6
+msgid ""
+"A Revised and Expanded Food Dollar Series: A Better Understanding of Our "
+"Food Costs"
+msgstr ""
+
+#: .\ingredients\templates\home.html:9
+#, fuzzy
+#| msgid ""
+#| " The same statistics reported in total dollar denominations are available "
+#| "in downloadable tables (for more information, see the \n"
+#| "        <a href=\"download\" rel=\"noopener\" done=\"\">Download the "
+#| "Data</a>)"
+msgid ""
+" All statistics reported in the dollar bill images represent a percentage of "
+"an average annual food dollar expenditure (for more information, see the \n"
+"        <a href=\"/glossary/\" rel=\"noopener\" done=\"\"> Glossary</a>)"
+msgstr ""
+"同樣以新台幣百元鈔呈現的統計結果可在下載的頁面中獲得（有關詳細信息，請參閱\n"
+"<a href=\"/download/\" rel=\"noopener\" done=\"\">資料下載</a>）"
+
+#: .\ingredients\templates\home.html:11
+#, fuzzy
+#| msgid ""
+#| " The same statistics reported in total dollar denominations are available "
+#| "in downloadable tables (for more information, see the \n"
+#| "        <a href=\"download\" rel=\"noopener\" done=\"\">Download the "
+#| "Data</a>)"
+msgid ""
+" The same statistics reported in total dollar denominations are available in "
+"downloadable tables (for more information, see the \n"
+"        <a href=\"/download/\" rel=\"noopener\" done=\"\">Download the Data</"
+"a>)"
+msgstr ""
+"同樣以新台幣百元鈔呈現的統計結果可在下載的頁面中獲得（有關詳細信息，請參閱\n"
+"<a href=\"/download/\" rel=\"noopener\" done=\"\">資料下載</a>）"
+
+#: .\ingredients\templates\home.html:14
+msgid ""
+"Data are available from 1981 to 2016 and are updated every 5 years. The data "
+"for 2021 will be released on the end of 2024."
+msgstr ""
+
+#: .\ingredients\templates\home.html:15
+msgid ""
+"Roughly every 5 years since 1981, a new benchmark data source is published "
+"based on the Directorate General of Budget, Accounting and "
+"Statistics(DGBAS). With a new benchmark, all data in the Food Dollar Series "
+"covering years since the previous benchmark undergo a final revision. For "
+"example, in 2024, the 2021 benchmark data were integrated into the Food "
+"Dollar Series, so all data from 1981 to 2023 in the series have been "
+"reconciled to the benchmark data for 1981, 1986, …, 2016 and 2021. Moreover, "
+"commodity-specific tables have been added to the data series that report "
+"only benchmark-year statistics (for more information, see Commodity Tables "
+"in the "
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:8
+msgid "Select a year"
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:11
+msgid "Select a sector"
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:15
+msgid ""
+"The Food Dollar Series provides an overview of the food system, with "
+"estimates of the farm share and of the distribution of food dollar, value "
+"added shares over time:"
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:17
+msgid ""
+"For a dollar representative of all domestically produced food spent in the "
+"United States in 2021, U.S. farmers sold 14.5 cents of farm products to "
+"nonfarm establishments (farm share), down from 15.5 cents in 2020."
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:18
+msgid ""
+"Farm production’s proportion of the food dollar decreased to 7.4 cents in "
+"2021. This is the lowest value in the series so far, which has been reached "
+"in 3 prior years: 1993, 2002, and 2019."
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:19
+msgid ""
+"Food-service costs per food dollar increased from 30.1 cents in 2020 to 33.6 "
+"cents in 2021. The foodservice share is again at a series high, after "
+"increasing for 8 straight years (2012–2019) and sharply decreasing in 2020."
+msgstr ""
+
+#: .\ingredients\templates\quickfact.html:20
+msgid ""
+"Property income’s share of the food dollar increased in 2021 to 39.4 cents, "
+"after increasing 4.3 cents in 2020. This pre-tax income paid to the owners "
+"of non-labor factors of production is 4.2 cents higher than its historical "
+"average."
+msgstr ""
+
+#~ msgid "{{ objects.year }}"
+#~ msgstr "{{ objects.year }}"

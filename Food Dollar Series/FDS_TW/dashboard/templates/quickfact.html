@@ -1,0 +1,38 @@
+{% extends "components/header.html" %}
+{% load i18n %}
+{% block content %}
+<div class = 'container content' id="quickfacks">
+    <select  class="form-select" id="plottings">
+        <option selected>Select the type of plotting</option>
+        <option value="Stage Share">Stage Share</option>
+        <option value="Marketing bill">Marketing bill</option>
+        <option value="Industry group">Industry group</option>
+        <option value="Primary factor">Primary factor</option>
+    </select>
+    <div class="selectorArea row mb-2">
+        <div class="col-mb-12 col-lg-6">
+            <select id='years' class="form-select">
+                <option selected value=0>{% translate "Select a year"%}</option>
+            </select>
+        </div>
+        <div class="col-mb-12 col-lg-6" style="visibility: hidden">
+            <select id='sectors' class="form-select ">
+                <option selected>{% translate "Select a sector"%}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row StageShareContainer" style="display: none">
+        <div class='col col-lg-6 col-md-12 col-sm-12' id='StageShareArea'>
+        </div>
+        <div class="col col-lg-6 col-md-12 col-sm-12">
+            <p><span>{% blocktrans %} The Food Dollar Series provides an overview of the food system, with estimates of the farm share and of the distribution of food dollar, value added shares over time:{% endblocktrans %}</span></p>
+            <ul>
+                <li><span>{% blocktrans %} For a dollar representative of all domestically produced food spent in the United States in 2021, U.S. farmers sold 14.5 cents of farm products to nonfarm establishments (farm share), down from 15.5 cents in 2020.{% endblocktrans %}</span></li>
+                <li><span>{% blocktrans %} Farm production’s proportion of the food dollar decreased to 7.4 cents in 2021. This is the lowest value in the series so far, which has been reached in 3 prior years: 1993, 2002, and 2019.{% endblocktrans %}</span></li>
+                <li><span>{% blocktrans %} Food-service costs per food dollar increased from 30.1 cents in 2020 to 33.6 cents in 2021. The foodservice share is again at a series high, after increasing for 8 straight years (2012–2019) and sharply decreasing in 2020.{% endblocktrans %}</span></li>
+                <li><span>{% blocktrans %} Property income’s share of the food dollar increased in 2021 to 39.4 cents, after increasing 4.3 cents in 2020. This pre-tax income paid to the owners of non-labor factors of production is 4.2 cents higher than its historical average.{% endblocktrans %}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
