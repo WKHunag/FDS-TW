@@ -17,6 +17,61 @@ const optionsCreate = (props) => {
   });
 };
 
+const getIndustryShare = async (props) => {
+    const IndustryShareQuery = {
+        query: `query industryshareByYearAndSector($year: Int!, $sector: String) {
+            industryshareByYearAndSector (year:$year, sector: $sector) {
+                Agribusiness
+                FarmProduction
+                FoodProcess
+                Packaging
+                Transportation
+                WholesaleTrade
+                RetailTrade
+                FoodService
+                Energy
+                FinanceInsurance
+                Advertising
+                Sector{
+                    Name
+                }
+            }
+        }`,
+        variables: {
+            year: parseInt(props.year),
+            sector: props.sector,
+        },
+    };
+
+    const options = {
+        url: endpoint,
+        method: "post",
+        headers: headers,
+        data: StageShareQuery,
+    };
+
+    try {
+        const response = await axios.request(options);
+        const res = response.data.data.stageshareByYearAndSector.map((d) => ({
+            Agribusiness: d.Agribusiness,
+            FarmProduction: d.FarmProduction,
+            FoodProcess: d.FoodProcess,
+            Packaging: d.Packaging,
+            Transportation: d.Transportation,
+            WholesaleTrade: d.WholesaleTrade,
+            RetailTrade: d.RetailTrade,
+            Trade: d.Trade,
+            FoodService: d.FoodService,
+            Energy: d.Energy,
+            FinanceInsurance: d.FinanceInsurance,
+            Advertising: d.Advertising,
+        }));
+        RunChart(res);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 const getStageShare = async (props) => {
   const StageShareQuery = {
     query: `query stageshareByYearAndSector($year: Int!, $sector: String) { 

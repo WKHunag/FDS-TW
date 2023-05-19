@@ -98,6 +98,7 @@ const fetchAllData = async (data) => {
                   Transportation
                   WholesaleTrade
                   RetailTrade
+                  Trade
                   FoodService
                   Energy
                   FinanceInsurance
