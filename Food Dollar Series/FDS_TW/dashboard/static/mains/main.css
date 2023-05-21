@@ -124,7 +124,7 @@
 }
 
 .container-sm {
-  width: 1023px;
+  width: 60%;
 }
 
 .sidenav {
@@ -132,9 +132,9 @@
   border-radius: 10%;
   background-color: #C7E9B0;
   color: rgb(34, 34, 34);
-  width: 240px;
+  width: 17%;
   position: fixed;
-  left: 1%;
+  left: 3%;
   right: 10px;
 }
 

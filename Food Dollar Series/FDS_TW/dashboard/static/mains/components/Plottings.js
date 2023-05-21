@@ -328,44 +328,69 @@ const RunChart = (fetchedData) => {
 
 
     const rectPlotting = (props) => {
-    const rect = props.svg.append("rect").attr('id', props.id);
-
-    rect
-        .attr('x', props.x)
-        .attr('y', 30)
-        .style('margin-top', '20px')
-        .attr('width', props.width)
-        .attr('height', props.height)
-        .attr('fill', props.color)
-        .attr('stroke', 'white')
-        .attr('stroke-width', '1px')
-        .style('opacity', .5)
-        .style("fill-opacity", .7)
-        .on('mouseover', function (d) {
-        if (d3.select(this).style("opacity") != 0) {
-            rect.transition()
-            .style("opacity", 1)
-            .attr("stroke-width", '5px');
-
-            props.label.style('visibility', 'visible')
-            .style('left', props.x + props.width / 3 + 'px')
-            .style('top', props.height / 2 + 'px')
-            .style("background-color", "none")
-            .style("border", props.color)
-            .html(props.id + ': ' + "<br>" + Math.round(props.value * 100) / 100 + '%');
-        }
-        })
-        .on('mouseout', function (d) {
-        rect.transition()
-            .style("opacity", .5)
-            .attr('stroke-width', '1px');
-
-    props.label.style('visibility', 'hidden');
-    });
-};
+        const rect = props.svg.append("rect").attr('id', props.id);
+      
+        rect
+          .attr('x', props.x)
+          .attr('y', props.y)
+          .attr('width', props.width)
+          .attr('height', props.height)
+          .attr('fill', props.color)
+          .attr('stroke', 'white')
+          .attr('stroke-width', '2px')
+          .style('opacity', 0.5)
+          .style("fill-opacity", 0.7)
+          .style("cursor", "pointer")
+          .on('mouseover', function () {
+            if (d3.select(this).style("opacity") != 0) {
+              rect
+                .transition()
+                .style("opacity", 0.7)
+                .attr('stroke-width', '0px');
+      
+              props.svg.selectAll('rect')
+                .filter((d, i, nodes) => d3.select(nodes[i]).attr('id') !== d3.select(this).attr('id'))
+                .style('fill-opacity', 0.5);
+      
+              props.label
+                .style('visibility', 'visible')
+                .style('left', props.x + props.width / 2 + 'px')
+                .style('top', props.height / 2 + 'px')
+                .style("background-color", "#fff")
+                .style("border", `2px solid ${props.color}`)
+                .style("padding", "8px")
+                .style("border-radius", "5px")
+                .style("box-shadow", "0 2px 4px rgba(0, 0, 0, 0.2)")
+                .style("font-weight", "bold")
+                .style("font-size", "14px")
+                .style("color", props.color)
+                .style("position", "absolute")
+                .style("transform", "translate(-50%, -50%)")
+                .style("opacity", 0)
+                .html(props.id + ':<br>' + Math.round(props.value * 100) / 100 + '%')
+                .transition()
+                .duration(200)
+                .style("opacity", 1);
+            }
+          })
+          .on('mouseout', function () {
+            rect
+              .transition()
+              .style("opacity", 0.5)
+              .attr('stroke-width', '2px');
+      
+            props.svg.selectAll('rect')
+              .filter((d, i, nodes) => d3.select(nodes[i]).attr('id') !== d3.select(this).attr('id'))
+              .style('fill-opacity', 2);
+      
+            props.label.style('visibility', 'hidden');
+          });
+      };
+           
+                        
 
 const RatioGraph = (props) => {
-    const rwdSvgWidth = parseInt(d3.select("body").style("width")) * 0.4;
+    const rwdSvgWidth = parseInt(d3.select(".container-sm").style("width"))*0.9;
     const rwdSvgHeight = rwdSvgWidth / 2;
     const margin = rwdSvgWidth * 0.075;
 
@@ -374,8 +399,8 @@ const RatioGraph = (props) => {
         .select('#' + props.chartAreaId)
         .append("svg")
         .attr("class", props.chartName)
-        .attr("width", rwdSvgWidth + margin * 3)
-        .attr("height", 400);
+        .attr("width", rwdSvgWidth)
+        .attr("height", rwdSvgHeight);
 
     let tooltip = d3.select(svg.node().parentNode)
         .append("div")
@@ -383,7 +408,7 @@ const RatioGraph = (props) => {
         .attr("class", "tooltip")
         .style('opacity', 1)
         .style('width', 'fit-content')
-        .style('height', '70px')
+        .style('height', rwdSvgHeight/2)
         .style("visibility", "hidden")
         .style('color', 'black')
         .style('font-weight', 800)
@@ -393,16 +418,16 @@ const RatioGraph = (props) => {
 
     if (props.data) {
         svg.append("rect")
-        .attr('x', margin * 2)
-        .attr('y', 30)
         .style('margin-top', '20px')
-        .attr('width', rwdSvgWidth)
-        .attr('height', rwdSvgHeight)
-        .attr('fill', 'url(#MarketingShareImage)');
+        .attr('x', rwdSvgWidth * 0.025)
+        .attr('y', rwdSvgHeight * 0.025)
+        .attr('width', rwdSvgWidth * 0.95)
+        .attr('height', rwdSvgHeight * 0.95)
+        .attr('fill', 'url(#ShareImage)');
 
     let defs = svg.append('svg:defs');
     defs.append("svg:pattern")
-        .attr("id", "MarketingShareImage")
+        .attr("id", "ShareImage")
         .attr("width", rwdSvgWidth * 1.5)
         .attr("height", rwdSvgHeight * 1.5)
         .attr("patternUnits", "userSpaceOnUse")
@@ -410,18 +435,16 @@ const RatioGraph = (props) => {
         .attr("xlink:href", '../static/images/100TWD.jpg')
         .attr("height", rwdSvgHeight)
         .attr("width", rwdSvgWidth)
-        .attr('x', margin * 2)
-        .attr('y', 30);
 
     let widths = Object.values(props.data);
     let idx = Object.keys(props.data);
-    let xpositions = []
+    let xpositions = [];
 
     for (let i = 0; i < widths.length; i++) {
     if (i === 0) {
-        xpositions.push(margin * 2)
+        xpositions.push(rwdSvgWidth * 0.025)
     } else {
-        xpositions.push(xpositions[i - 1] + rwdSvgWidth * widths[i - 1] / 100)
+        xpositions.push(xpositions[i - 1] + rwdSvgWidth * 0.95 * widths[i - 1] / 100)
     }
     }
 
@@ -431,9 +454,10 @@ const RatioGraph = (props) => {
         label: tooltip,
         id: idx[i],
         x: xpositions[i],
+        y: rwdSvgHeight * 0.025,
         value: widths[i],
-        width: rwdSvgWidth * widths[i] / 100,
-        height: rwdSvgHeight,
+        width: rwdSvgWidth * 0.95 * widths[i] / 100,
+        height: rwdSvgHeight * 0.95,
         color: props.colors[i]
     });
     }

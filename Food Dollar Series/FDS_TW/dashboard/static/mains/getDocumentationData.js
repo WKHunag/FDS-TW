@@ -76,10 +76,8 @@ const fetchAllData = async (data) => {
                   OperatingSurplus
                   ConsumptionOfFixedCapital
                   NetTaxes
+                  Adjustment
                   Imports
-                  Sector{
-                    Name
-                  }
                 }
               }`,
       variables: {
