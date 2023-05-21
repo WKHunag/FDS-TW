@@ -199,6 +199,18 @@
 
 // export { RatioGraph, RunChart };
 
+function getRandomColors(numColors) {
+    const colorMenu = ["#F7CB44","#F9B641","#F9A242","#F68F46","#EB8055","#DE7065",
+                        "#CC6A70","#B8627D","#A65C85","#90548B","#7E4E90","#6B4596",
+                        "#593D9C","#403891","#253582"];
+    const colors = [];
+    for (let i = 0; i < numColors; i++) {
+      colors.push(colorMenu[i]);
+    }
+    
+    return colors;
+  }
+
 const RunChart = (fetchedData) => {
     const data = fetchedData ? fetchedData[0] : null;
 
@@ -338,19 +350,19 @@ const RunChart = (fetchedData) => {
           .attr('fill', props.color)
           .attr('stroke', 'white')
           .attr('stroke-width', '2px')
-          .style('opacity', 0.5)
-          .style("fill-opacity", 0.7)
+          .style('opacity', 0.8)
+          .style("fill-opacity", "70%")
           .style("cursor", "pointer")
           .on('mouseover', function () {
             if (d3.select(this).style("opacity") != 0) {
               rect
                 .transition()
-                .style("opacity", 0.7)
+                .style("opacity", 1)
                 .attr('stroke-width', '0px');
       
               props.svg.selectAll('rect')
                 .filter((d, i, nodes) => d3.select(nodes[i]).attr('id') !== d3.select(this).attr('id'))
-                .style('fill-opacity', 0.5);
+                .style('fill-opacity', "50%");
       
               props.label
                 .style('visibility', 'visible')
@@ -376,12 +388,12 @@ const RunChart = (fetchedData) => {
           .on('mouseout', function () {
             rect
               .transition()
-              .style("opacity", 0.5)
+              .style("opacity", 0.8)
               .attr('stroke-width', '2px');
       
             props.svg.selectAll('rect')
               .filter((d, i, nodes) => d3.select(nodes[i]).attr('id') !== d3.select(this).attr('id'))
-              .style('fill-opacity', 2);
+              .style('fill-opacity', "70%");
       
             props.label.style('visibility', 'hidden');
           });
@@ -464,4 +476,4 @@ const RatioGraph = (props) => {
 }
 };
 
-export { RatioGraph, RunChart };
+export { RatioGraph, RunChart, getRandomColors };

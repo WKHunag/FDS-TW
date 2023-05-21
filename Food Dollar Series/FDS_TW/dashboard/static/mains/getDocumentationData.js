@@ -1,28 +1,10 @@
-import { RatioGraph } from "./components/Plottings.js";
+import { RatioGraph, getRandomColors } from "./components/Plottings.js";
 
 const endpoint = "http://127.0.0.1:8000/graphql/";
 const headers = {
   "content-type": "application/json",
 };
 
-function getRandomColors(numColors) {
-    const colors = [];
-    
-    for (let i = 0; i < numColors; i++) {
-      // Generate random RGB values
-      const red = Math.floor(Math.random() * 256);
-      const green = Math.floor(Math.random() * 256);
-      const blue = Math.floor(Math.random() * 256);
-      
-      // Create the color string in hexadecimal format
-      const color = '#' + ((1 << 24) + (red << 16) + (green << 8) + blue).toString(16).slice(1);
-      
-      // Add the color to the array
-      colors.push(color);
-    }
-    
-    return colors;
-  }
 
 const fetchData = async (query, chartName, chartAreaId) => {
   const options = {
@@ -36,7 +18,7 @@ const fetchData = async (query, chartName, chartAreaId) => {
     const response = await axios.request(options);
     const res = response.data.data;
     const data = res[chartName][0];
-    const numColors = Object.keys(data).length-1;
+    const numColors = Object.keys(data).length;
     const colors = getRandomColors(numColors);
     const props = {
       chartName,
