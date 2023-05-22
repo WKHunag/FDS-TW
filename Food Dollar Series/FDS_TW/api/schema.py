@@ -70,9 +70,9 @@ class PrimaryType(DjangoObjectType):
 class Query(graphene.ObjectType):
     allYears = graphene.List(YearType)
     stageshare_by_year_and_sector = graphene.List(StageShareType, year=graphene.Int(required=True), sector=graphene.String(required=False))
-    marketing_by_year_and_sector = graphene.List(MarketingType, year=graphene.Int(required=True), sector=graphene.String(required=True))
-    industry_by_year_and_sector = graphene.List(IndustryType, year=graphene.Int(required=True), sector=graphene.String(required=True))
-    primary_by_year_and_sector = graphene.List(PrimaryType, year=graphene.Int(required=True), sector=graphene.String(required=True))
+    marketing_by_year_and_sector = graphene.List(MarketingType, year=graphene.Int(required=True), sector=graphene.String(required=False))
+    industry_by_year_and_sector = graphene.List(IndustryType, year=graphene.Int(required=True), sector=graphene.String(required=False))
+    primary_by_year_and_sector = graphene.List(PrimaryType, year=graphene.Int(required=True), sector=graphene.String(required=False))
 
     def resolve_allYears(root, info):
         return Year.objects.all()
