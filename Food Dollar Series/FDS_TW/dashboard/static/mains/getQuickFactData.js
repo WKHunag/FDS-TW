@@ -72,13 +72,14 @@ const getSharingData = async (props, chartName, chartAreaId) => {
   };
 
   try {
-    const theYear = document.querySelector('.theYear');
-    theYear.innerHTML = props.year;
+    const theYear = document.querySelector('.' + chartAreaId.substring(0, chartAreaId.length - 4) + 'Container .theYear');
     const response = await axios.request(options);
     const res = response.data.data;
     const data = res[chartName][0];
     const numColors = Object.keys(data).length;
     const colors = getRandomColors(numColors);
+    const year = data.Year.Year;
+    theYear.innerHTML = year;
     const props = {
       chartName,
       chartAreaId,

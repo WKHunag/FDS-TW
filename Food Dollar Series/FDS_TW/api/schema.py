@@ -32,6 +32,7 @@ class MarketingType(DjangoObjectType):
             "FarmShare",
             "MarketingShare",
             "Sector",
+            "Year"
         )
 
 class IndustryType(DjangoObjectType):
@@ -52,6 +53,7 @@ class IndustryType(DjangoObjectType):
             "Advertising",
             "Accounting",
             "Sector",
+            "Year"
         )
 
 class PrimaryType(DjangoObjectType):
@@ -65,6 +67,7 @@ class PrimaryType(DjangoObjectType):
             "Imports",
             "Adjustment",
             "Sector",
+            "Year"
         )
 
 class Query(graphene.ObjectType):
