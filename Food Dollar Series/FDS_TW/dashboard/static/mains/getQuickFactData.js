@@ -1,4 +1,4 @@
-import { RatioGraph, RunChart } from "./components/Plottings.js";
+import { RatioGraph, RunChart, getRandomColors } from "./components/Plottings.js";
 
 const endpoint = "http://127.0.0.1:8000/graphql/";
 const headers = {
@@ -17,27 +17,33 @@ const optionsCreate = (props) => {
   });
 };
 
-const getStageShare = async (props) => {
-  const StageShareQuery = {
-    query: `query stageshareByYearAndSector($year: Int!, $sector: String) { 
-      stageshareByYearAndSector (year:$year, sector: $sector) {
-        FarmGate
-        TransGate
-        ProcessGate
-        TradeGate
+const setQuery = (props) => {
+    const query = {
+      query: `query ${props.queryName} ($year: Int!, $sector: String) {
+        ${props.queryName} (year:$year, sector: $sector) {
+          ${props.queryName === "stageshareByYearAndSector" ? "FarmGate TransGate ProcessGate TradeGate Year{Year}" :
+              props.queryName === "marketingByYearAndSector" ? "FarmShare MarketingShare Year{Year}" :
+              props.queryName === "industryByYearAndSector" ? "Agribusiness FarmProduction FoodProcess Packaging Transportation WholesaleTrade RetailTrade Trade FoodService Energy FinanceInsurance Advertising Accounting Year{Year}" :
+              props.queryName === "primaryByYearAndSector" ? "Compensation OperatingSurplus ConsumptionOfFixedCapital NetTaxes Adjustment Imports Year{Year}" :
+              ""}
+        }
+      }`,
+      variables: {
+        year: parseInt(props.year),
+        sector: props.sector,
       }
-    }`,
-    variables: {
-      year: parseInt(props.year),
-      sector: props.sector,
-    },
-  };
+    };
+    return query;
+  }
+
+const getStageShare = async (props) => {
+  const query = setQuery({queryName: "stageshareByYearAndSector", year: props.year, sector: props.sector})
 
   const options = {
     url: endpoint,
     method: "post",
     headers: headers,
-    data: StageShareQuery,
+    data: query,
   };
 
   try {
@@ -53,6 +59,37 @@ const getStageShare = async (props) => {
     console.error(error);
   }
 };
+
+const getSharingData = async (props, chartName, chartAreaId) => {
+  const query = setQuery({
+    queryName: chartName, year: props.year, sector: props.sector
+  });
+  const options = {
+    url: endpoint,
+    method: "post",
+    headers: headers,
+    data: query,
+  };
+
+  try {
+    const theYear = document.querySelector('.theYear');
+    theYear.innerHTML = props.year;
+    const response = await axios.request(options);
+    const res = response.data.data;
+    const data = res[chartName][0];
+    const numColors = Object.keys(data).length;
+    const colors = getRandomColors(numColors);
+    const props = {
+      chartName,
+      chartAreaId,
+      data,
+      colors,
+    };
+    RatioGraph(props);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const getSectors = async (data) => {
   const SectorQuery = {
@@ -82,14 +119,29 @@ const getSectors = async (data) => {
     let data = res.stageshareByYearAndSector.map((d) => d.Sector.Name);
     data = data.filter((element, index, self) => self.indexOf(element) === index);
     optionsCreate({ id: "sectors", parentID: "StageShareArea", data });
-
+    const plottingSelector = document.querySelector("#plottings");
     const sectorSelector = document.querySelector("#sectors");
     sectorSelector.addEventListener("change", (event) => {
-      if (sectorSelector.value !== "0") {
+      if (sectorSelector.value !== "0" && plottingSelector.value === "Stage Share") {
         getStageShare({
           year: document.querySelector("#years").value,
           sector: document.querySelector("#sectors").value,
         });
+      }else if(sectorSelector.value !== "0" && plottingSelector.value === "Marketing bill") {
+        getSharingData({
+          year: document.querySelector("#years").value,
+          sector: document.querySelector("#sectors").value,
+        }, "marketingByYearAndSector", "MarketingShareArea");
+      }else if(sectorSelector.value !== "0" && plottingSelector.value === "Industry group") {
+        getSharingData({
+          year: document.querySelector("#years").value,
+          sector: document.querySelector("#sectors").value,
+        }, "industryByYearAndSector", "IndustryShareArea");
+      }else if(sectorSelector.value !== "0" && plottingSelector.value === "Primary factor") {
+        getSharingData({
+          year: document.querySelector("#years").value,
+          sector: document.querySelector("#sectors").value,
+        }, "primaryByYearAndSector", "PrimaryShareArea");
       }
     });
   } catch (error) {
@@ -116,14 +168,23 @@ const getData = async () => {
 
     const plottingSelector = document.querySelector("#plottings");
     const StageShareContainer = document.querySelector(".StageShareContainer");
+    const MarketingShareContainer = document.querySelector(".MarketingShareContainer");
+    const IndustryShareContainer = document.querySelector(".IndustryShareContainer");
+    const PrimaryShareContainer = document.querySelector(".PrimaryShareContainer");
     plottingSelector.addEventListener("change", (event) => {
       StageShareContainer.style.display = plottingSelector.value === "Stage Share" ? "flex" : "none";
+      MarketingShareContainer.style.display = plottingSelector.value === "Marketing bill" ? "flex" : "none";
+      IndustryShareContainer.style.display = plottingSelector.value === "Industry group" ? "flex" : "none";
+      PrimaryShareContainer.style.display = plottingSelector.value === "Primary factor" ? "flex" : "none";
     });
 
     const data = res.allYears.map((d) => d.Year);
     await Promise.all([
       optionsCreate({ id: "years", parentID: "StageShareArea", data }),
       getStageShare({ year: Math.max(...data), sector: "整體農食" }),
+      getSharingData({ year: Math.max(...data), sector: "整體農食" }, "marketingByYearAndSector", "MarketingShareArea"),
+      getSharingData({ year: Math.max(...data), sector: "整體農食" }, "industryByYearAndSector", "IndustryShareArea"),
+      getSharingData({ year: Math.max(...data), sector: "整體農食" },"primaryByYearAndSector", "PrimaryShareArea"),
     ]);
 
     const yearSelector = document.querySelector("#years");
