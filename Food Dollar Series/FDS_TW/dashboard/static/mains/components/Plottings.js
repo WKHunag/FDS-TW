@@ -4,7 +4,7 @@ function getRandomColors(numColors) {
                         "#593D9C","#403891","#253582"];
     const colors = [];
     for (let i = 0; i < numColors; i++) {
-        colors.push(colorMenu[i]);
+        colors.push(colorMenu[colorMenu.length-1-i]);
     }
     
     return colors;
