@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-23 16:55+0800\n"
+"POT-Creation-Date: 2023-05-25 14:43+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "年度"
 #: .\dashboard\models.py:43 .\dashboard\models.py:71 .\dashboard\models.py:107
 #: .\dashboard\models.py:140
 msgid "Sector"
-msgstr "類別"
+msgstr "部門產品"
 
 #: .\dashboard\models.py:37
 msgid "Farm Gate"
@@ -48,7 +48,7 @@ msgstr "批發零售"
 
 #: .\dashboard\models.py:63 .\dashboard\models.py:64
 msgid "Stage Share"
-msgstr ""
+msgstr "價格傳遞機制"
 
 #: .\dashboard\models.py:68
 msgid "Farm Share"
@@ -60,7 +60,7 @@ msgstr "市場份額"
 
 #: .\dashboard\models.py:88 .\dashboard\models.py:89
 msgid "Marketing Bill"
-msgstr ""
+msgstr "市場支出"
 
 #: .\dashboard\models.py:93 .\dashboard\templates\documentation.html:31
 msgid "Agribusiness"
@@ -114,11 +114,13 @@ msgstr "廣告"
 
 #: .\dashboard\models.py:105
 msgid "Accounting"
-msgstr ""
+msgstr "會計"
 
 #: .\dashboard\models.py:127 .\dashboard\models.py:128
-msgid "Industry Bill"
-msgstr ""
+#, fuzzy
+#| msgid "Industry group series"
+msgid "Industry Group"
+msgstr "產業群組鏈"
 
 #: .\dashboard\models.py:132 .\dashboard\models.py:166
 #, fuzzy
@@ -140,7 +142,7 @@ msgstr "生產及進口稅淨額"
 
 #: .\dashboard\models.py:136
 msgid "Adjustment"
-msgstr ""
+msgstr "校準"
 
 #: .\dashboard\models.py:137 .\dashboard\models.py:170
 #: .\dashboard\templates\documentation.html:55
@@ -148,20 +150,22 @@ msgid "Imports"
 msgstr "進口品"
 
 #: .\dashboard\models.py:160 .\dashboard\models.py:161
-msgid "Primary Bill"
-msgstr ""
+#, fuzzy
+#| msgid "Primary factor series"
+msgid "Primary Factor"
+msgstr "原始投入鏈"
 
 #: .\dashboard\models.py:165
 msgid "Name"
-msgstr ""
+msgstr "產品名稱"
 
 #: .\dashboard\models.py:171
 msgid "Total"
-msgstr ""
+msgstr "合計"
 
 #: .\dashboard\models.py:184 .\dashboard\models.py:185
 msgid "Primary & industry cross-tablated statistics"
-msgstr ""
+msgstr "產業群組與原始投入之交叉統計"
 
 #: .\dashboard\templates\components\navbar.html:32
 msgid "Background"
@@ -169,7 +173,7 @@ msgstr "關於"
 
 #: .\dashboard\templates\components\navbar.html:33
 msgid "Documentation"
-msgstr "使用說明"
+msgstr "說明"
 
 #: .\dashboard\templates\components\navbar.html:34
 msgid "Quick Facts"
@@ -217,34 +221,43 @@ msgstr "參考資料"
 
 #: .\dashboard\templates\documentation.html:15
 msgid ""
-"<span>A food dollar represents a NT$1 expenditure on domestically produced "
+"<span>A food dollar represents a NT$100 expenditure on domestically produced "
 "food by Taiwan consumers. The food dollar is allocated to expenditures on "
 "each of the various food commodities sold in proportions that represent "
 "their share of annual sales in the domestic market. See the </span><a href="
-"\"https://eng.stat.gov.tw/cl.aspx?n=2357\"><span>The Survey of Family Income "
-"and Expenditure</span></a><span> page for information on Family expenditures "
-"and </span><a href=\"https://agrstat.coa.gov.tw/sdweb/public/trade/"
-"tradereport.aspx\"><span>Agricultural Trade</span></a><span> for information "
-"on the import share of Agricultural food.</span>"
-msgstr ""
+"\"https://eng.stat.gov.tw/cl.aspx?n=2357\" target=\"_blank\" rel="
+"\"noreferrer noopenner\"><span>The Survey of Family Income and Expenditure</"
+"span></a><span> page for information on Family expenditures and </span><a "
+"href=\"https://agrstat.coa.gov.tw/sdweb/public/trade/tradereport.aspx\" "
+"target=\"_blank\" rel=\"noreferrer noopenner\"><span>Agricultural Trade</"
+"span></a><span> for information on the import share of Agricultural food.</"
+"span>"
+msgstr "<span>食品消費金代表台灣消費者以100元新台幣分別對國內生產食品的支出比例。食品消費金額按照各種"
+"不同食品商品的比例分配到每項支出上，這些比例代表了它們在國內市場年度銷售中的份額。"
+"有關家庭收入支出的資訊，請參閱</span><a href=\"https://www.stat.gov.tw/News.aspx?n=2694&sms=11033\""
+" target=\"_blank\" rel=\"noreferrer noopenner\"><span>家庭收支調查報告</a>，"
+"有關農業貿易的資訊，請參閱</span><a href=\"https://agrstat.coa.gov.tw/sdweb/public/trade/tradereport.aspx\""
+" target=\"_blank\" rel=\"noreferrer noopenner\">農產品貿易</a>的相關資料。"
 
 #: .\dashboard\templates\documentation.html:16
 msgid ""
 "<span>The Food Dollar Series divides the food dollar into a set of input-"
 "component values. There are three primary series—the marketing bill series, "
 "the industry group series, and the primary factor series. For each primary "
-"Food Dollar Series, the combined input-component values are equal to the $1 "
-"output-market value. The three series represent distinct perspectives on the "
-"sources of market value for the combined annual food dollar expenditures.</"
-"span>"
-msgstr ""
+"Food Dollar Series, the combined input-component values are equal to the NT"
+"$100 output-market value. The three series represent distinct perspectives "
+"on the sources of market value for the combined annual food dollar "
+"expenditures.</span>"
+msgstr "<span>食品消費金額鏈將食品消費金額劃分為一組投入份額。主要有三類金額鏈："
+"市場支出鏈、行業群組鏈和原始投入鏈。每個金額鏈之數值總和等於100元新台幣的市場價值。"
+"這三個系列代表了對於結合年度食品元支出市場價值來源的不同觀點。</span>"
 
 #: .\dashboard\templates\documentation.html:18
 msgid ""
 "<span>The marketing bill series is based on sales proceeds. Proceeds from "
 "each food dollar expenditure are divided into two sub-components of market "
 "value:</span>"
-msgstr ""
+msgstr "<span></span>"
 
 #: .\dashboard\templates\documentation.html:20
 msgid ""
@@ -664,11 +677,11 @@ msgstr ""
 
 #: .\dashboard\templates\quickfact.html:15
 msgid "Select a year"
-msgstr ""
+msgstr "選擇年度"
 
 #: .\dashboard\templates\quickfact.html:20
 msgid "Select a sector"
-msgstr ""
+msgstr "選擇部門產品"
 
 #: .\dashboard\templates\quickfact.html:28
 msgid ""

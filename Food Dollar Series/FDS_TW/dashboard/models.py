@@ -124,8 +124,8 @@ class Industry(models.Model):
         return [ f.name for f in self._meta.fields + self._meta.many_to_many ]
     
     class Meta:
-        verbose_name = _("Industry Bill")
-        verbose_name_plural = _("Industry Bill")
+        verbose_name = _("Industry Group")
+        verbose_name_plural = _("Industry Group")
         ordering = ['Year']
 
 class Primary(models.Model):
@@ -144,12 +144,12 @@ class Primary(models.Model):
     )
 
     def __str__(self):
-        return '%s, Compensation: %s, Operating Surplus: %s, Consumption of Fixed Capital: %s, Net taxes: %s, Imports: %s' % (
+        return 'Sector: %s, Compensation: %s, Operating Surplus: %s, Consumption of Fixed Capital: %s, Net taxes: %s, Adjustment: %s, Imports: %s' % (
             self.Sector.Name, self.Compensation, self.OperatingSurplus, self.ConsumptionOfFixedCapital, self.NetTaxes, self.Adjustment, self.Imports
         )
     
     def __unicode__(self):
-        return '%s, Compensation: %s, Operating Surplus: %s, Consumption of Fixed Capital: %s, Net taxes: %s, Imports: %s' % (
+        return 'Sector: %s, Compensation: %s, Operating Surplus: %s, Consumption of Fixed Capital: %s, Net taxes: %s, Adjustment: %s, Imports: %s' % (
             self.Sector.Name, self.Compensation, self.OperatingSurplus, self.ConsumptionOfFixedCapital, self.NetTaxes, self.Adjustment, self.Imports
         )
     
@@ -157,8 +157,8 @@ class Primary(models.Model):
         return [ f.name for f in self._meta.fields + self._meta.many_to_many ]
     
     class Meta:
-        verbose_name = _("Primary Bill")
-        verbose_name_plural = _("Primary Bill")
+        verbose_name = _("Primary Factor")
+        verbose_name_plural = _("Primary Factor")
         ordering = ['Year']
 
 class IndustryCrossPrimary(models.Model):
